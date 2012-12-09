@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>вася</title>
+</head>
+<body>
+Персоны: <br>
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Rate</th>
+	</tr>
+	{% for person in persons %}
+		<tr>
+			<td>{{ person.key().id() }}</td>
+			<td>{{ person.name }}</td>
+			<td>{{ person.rate }}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+</body>
+</html>
