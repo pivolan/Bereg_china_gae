@@ -6,6 +6,36 @@ from webapp2_extras import sessions
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
+
+class WSGIApplication(webapp2.WSGIApplication):
+	def __init__(self, *args, **kwargs):
+		super(WSGIApplication, self).__init__(*args, **kwargs)
+		self.router.set_dispatcher(self.__class__.custom_dispatcher)
+
+	@staticmethod
+	def custom_dispatcher(router, request, response):
+		rv = router.default_dispatcher(request, response)
+		if isinstance(rv, basestring):
+			rv = webapp2.Response(rv)
+		elif isinstance(rv, tuple):
+			rv = webapp2.Response(*rv)
+
+		return rv
+
+	def route(self, *args, **kwargs):
+		def wrapper(func):
+			self.router.add(webapp2.Route(handler=func, *args, **kwargs))
+			return func
+
+		return wrapper
+
+config = {}
+config['webapp2_extras.sessions'] = {
+	'secret_key': 'my-super-secret-key',
+	}
+app = WSGIApplication(debug=True,
+                              config=config)
+
 class BaseHandler(webapp2.RequestHandler):
 	@webapp2.cached_property
 	def jinja2(self):
@@ -38,10 +68,10 @@ class BaseHandler(webapp2.RequestHandler):
 		return self.session_store.get_session(name='mc_session',
 		                                      factory=sessions_memcache.MemcacheSessionFactory)
 
-
+@app.route('/')
 class MainPage(BaseHandler):
 	def get(self):
-		self.render_response('main.html', persons=Person.all())
+		return self.render_response('main.html', persons=Person.all())
 
 
 class CommentPage(BaseHandler):
@@ -52,6 +82,8 @@ class CommentPage(BaseHandler):
 
 
 class RatingPage(BaseHandler):
+	def add(self):
+		self.render_json([1,2,3,4])
 	def get(self):
 		link_id = int(self.request.get('id'))
 		type = self.request.get('type')
@@ -102,7 +134,7 @@ class PersonPage(BaseHandler):
 
 
 class PersonViewPage(BaseHandler):
-	def get(self):
+	def get(self, id):
 		id = int(self.request.get('id', 0))
 		if id > 0:
 			self.render_json(Person.get_by_id(id).name)
@@ -125,17 +157,3 @@ class Person(db.Model):
 	name = db.StringProperty()
 	description = db.StringProperty(multiline=True)
 	rate = db.IntegerProperty(default=0)
-
-
-config = {}
-config['webapp2_extras.sessions'] = {
-'secret_key': 'my-super-secret-key',
-}
-app = webapp2.WSGIApplication([('/', MainPage),
-                               ('/comment', CommentPage),
-                               ('/person1', PersonViewPage),
-                               ('/person', PersonPage),
-                               ('/rate', RatingPage),
-                              ],
-                              debug=True,
-                              config=config)
