@@ -80,7 +80,7 @@ class UserList(BaseHandler):
 @app.route('/user/add/<name>/<description>')
 class UserAdd(BaseHandler):
 	def get(self, name, description):
-		user = Person(name = name.decode('utf8'), description = description.decode('utf8'))
+		user = Person(name=name.decode('utf8'), description=description.decode('utf8'))
 		user.save()
 		return self.render_json(user.key().id())
 
@@ -120,13 +120,12 @@ class CommentAddComment(BaseHandler):
 		comment_new.save()
 		return self.render_json('ok')
 
-
+#region rating
 @app.route('/rate/user/<user_id>/inc')
 class UserIncreaseRate(BaseHandler):
 	def get(self, user_id):
 		user = Person().get_by_id(int(user_id))
-		user.rate += 1
-		user.save()
+		Rate().inc(user, self.session)
 		return self.render_json(user.rate)
 
 
@@ -134,8 +133,7 @@ class UserIncreaseRate(BaseHandler):
 class UserDecreaseRate(BaseHandler):
 	def get(self, user_id):
 		user = Person().get_by_id(int(user_id))
-		user.rate -= 1
-		user.save()
+		Rate().dec(user, self.session)
 		return self.render_json(user.rate)
 
 
@@ -143,8 +141,7 @@ class UserDecreaseRate(BaseHandler):
 class commentIncreaseRate(BaseHandler):
 	def get(self, comment_id):
 		comment = Comment().get_by_id(int(comment_id))
-		comment.rate += 1
-		comment.save()
+		Rate().inc(comment, self.session)
 		return self.render_json(comment.rate)
 
 
@@ -152,9 +149,10 @@ class commentIncreaseRate(BaseHandler):
 class commentDecreaseRate(BaseHandler):
 	def get(self, comment_id):
 		comment = Comment().get_by_id(int(comment_id))
-		comment.rate -= 1
-		comment.save()
+		Rate().dec(comment, self.session)
 		return self.render_json(comment.rate)
+
+#endregion
 
 
 class RatingPage(BaseHandler):
@@ -190,6 +188,7 @@ class RatingPage(BaseHandler):
 			else:
 				return self.render_json(is_rated)
 		self.render_json(rate)
+
 """
 Models
 """
@@ -206,3 +205,20 @@ class Person(db.Model):
 	name = db.StringProperty()
 	description = db.StringProperty(multiline=True)
 	rate = db.IntegerProperty(default=0)
+
+
+class Rate():
+	def inc(self, obj, session):
+		self._change(obj, 1, session)
+
+	def dec(self, obj, session):
+		self._change(obj, -1, session)
+
+	def _change(self, obj, value, session):
+		if isinstance(obj, (Comment, Person)):
+			type = obj.__class__.__name__
+			key = type + str(obj.key().id())
+			if key not in session:
+				obj.rate += value
+				obj.save()
+			session[key] = True
