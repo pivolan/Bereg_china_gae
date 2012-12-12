@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 import webapp2
 from webapp2_extras import jinja2
 from webapp2_extras import json
@@ -69,17 +71,28 @@ class BaseHandler(webapp2.RequestHandler):
 		                                      factory=sessions_memcache.MemcacheSessionFactory)
 
 @app.route('/')
-class MainPage(BaseHandler):
+class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('main.html', persons=Person.all())
 
+@app.route('/user/<user_id>/comments')
+class UserComments(BaseHandler):
+	def get(self, user_id):
+		user = Person.get_by_id(int(user_id))
+		comments = {}
+		for comment in user.comment_set:
+			comments[comment.key().id()] = comment.text
+		return self.render_json(comments)
 
-class CommentPage(BaseHandler):
-	def get(self):
-		self.response.headers['Content-Type'] = 'application/json'
-		self.session['niger'] = self.request.get('vasya')
-		self.response.out.write(json.encode(self.request.GET['vasya']))
-
+@app.route('/comment/user/add/<user_id:\d+>/<text>')
+class AddComment(BaseHandler):
+	def get(self, user_id=2, text='vasya go go'):
+		user = Person().get_by_id(int(user_id))
+		comment = Comment()
+		comment.text = text.decode('utf8')
+		comment.link = user
+		comment.save()
+		return self.render_json([user_id, text, comment.key().id(), comment.text])
 
 class RatingPage(BaseHandler):
 	def add(self):
