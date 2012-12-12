@@ -10,12 +10,14 @@
 		<th>Id</th>
 		<th>Name</th>
 		<th>Rate</th>
+		<th>Comments count</th>
 	</tr>
 	{% for person in persons %}
 		<tr>
 			<td>{{ person.key().id() }}</td>
-			<td>{{ person.name }}</td>
+			<td><a href="/user/{{ person.key().id() }}/comments">{{ person.name }}</a></td>
 			<td>{{ person.rate }}</td>
+			<td>{{ person.comment_set.count() }}</td>
 		</tr>
 	{% endfor %}
 </table>

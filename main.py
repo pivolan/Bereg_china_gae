@@ -34,9 +34,9 @@ class WSGIApplication(webapp2.WSGIApplication):
 config = {}
 config['webapp2_extras.sessions'] = {
 	'secret_key': 'my-super-secret-key',
-	}
+}
 app = WSGIApplication(debug=True,
-                              config=config)
+                      config=config)
 
 class BaseHandler(webapp2.RequestHandler):
 	@webapp2.cached_property
@@ -70,10 +70,20 @@ class BaseHandler(webapp2.RequestHandler):
 		return self.session_store.get_session(name='mc_session',
 		                                      factory=sessions_memcache.MemcacheSessionFactory)
 
+
 @app.route('/')
 class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('main.html', persons=Person.all())
+
+
+@app.route('/user/add/<name>/<description>')
+class UserAdd(BaseHandler):
+	def get(self, name, description):
+		user = Person(name = name.decode('utf8'), description = description.decode('utf8'))
+		user.save()
+		return self.render_json(user.key().id())
+
 
 @app.route('/user/<user_id>/comments')
 class UserComments(BaseHandler):
@@ -81,12 +91,19 @@ class UserComments(BaseHandler):
 		user = Person.get_by_id(int(user_id))
 		comments = {}
 		for comment in user.comment_set:
-			comments[comment.key().id()] = comment.text
+			comments[comment.key().id()] = {'rate': comment.rate,
+			                                'text': comment.text,
+			                                'comments': {}}
+			if comment.comment_set:
+				for s2 in comment.comment_set:
+					comments[comment.key().id()]['comments'][s2.key().id()] = {'rate': s2.rate,
+					                                                           'text': s2.text}
 		return self.render_json(comments)
 
-@app.route('/comment/user/add/<user_id:\d+>/<text>')
-class AddComment(BaseHandler):
-	def get(self, user_id=2, text='vasya go go'):
+
+@app.route('/comment/user/<user_id:\d+>/<text>')
+class CommentAddUser(BaseHandler):
+	def get(self, user_id, text):
 		user = Person().get_by_id(int(user_id))
 		comment = Comment()
 		comment.text = text.decode('utf8')
@@ -94,9 +111,53 @@ class AddComment(BaseHandler):
 		comment.save()
 		return self.render_json([user_id, text, comment.key().id(), comment.text])
 
+
+@app.route('/comment/<comment_id:\d+>/<text>')
+class CommentAddComment(BaseHandler):
+	def get(self, comment_id, text):
+		comment = Comment().get_by_id(int(comment_id))
+		comment_new = Comment(link=comment, text=text.decode('utf8'))
+		comment_new.save()
+		return self.render_json('ok')
+
+
+@app.route('/rate/user/<user_id>/inc')
+class UserIncreaseRate(BaseHandler):
+	def get(self, user_id):
+		user = Person().get_by_id(int(user_id))
+		user.rate += 1
+		user.save()
+		return self.render_json(user.rate)
+
+
+@app.route('/rate/user/<user_id>/dec')
+class UserDecreaseRate(BaseHandler):
+	def get(self, user_id):
+		user = Person().get_by_id(int(user_id))
+		user.rate -= 1
+		user.save()
+		return self.render_json(user.rate)
+
+
+@app.route('/rate/comment/<comment_id>/inc')
+class commentIncreaseRate(BaseHandler):
+	def get(self, comment_id):
+		comment = Comment().get_by_id(int(comment_id))
+		comment.rate += 1
+		comment.save()
+		return self.render_json(comment.rate)
+
+
+@app.route('/rate/comment/<comment_id>/dec')
+class commentDecreaseRate(BaseHandler):
+	def get(self, comment_id):
+		comment = Comment().get_by_id(int(comment_id))
+		comment.rate -= 1
+		comment.save()
+		return self.render_json(comment.rate)
+
+
 class RatingPage(BaseHandler):
-	def add(self):
-		self.render_json([1,2,3,4])
 	def get(self):
 		link_id = int(self.request.get('id'))
 		type = self.request.get('type')
@@ -129,31 +190,6 @@ class RatingPage(BaseHandler):
 			else:
 				return self.render_json(is_rated)
 		self.render_json(rate)
-
-
-class PersonPage(BaseHandler):
-	def get(self):
-		name = self.request.get('name')
-		if name:
-			description = self.request.get('description', '')
-			person = Person(name=name, description=description)
-			person.save()
-			self.render_json(person.key().id())
-		else:
-			self.render_json('no name')
-
-	def post(self):
-		pass
-
-
-class PersonViewPage(BaseHandler):
-	def get(self, id):
-		id = int(self.request.get('id', 0))
-		if id > 0:
-			self.render_json(Person.get_by_id(id).name)
-		else:
-			self.render_json('no id found')
-
 """
 Models
 """
@@ -163,7 +199,7 @@ class Comment(db.Model):
 	link = db.ReferenceProperty()
 	text = db.StringProperty(multiline=True)
 	date = db.DateTimeProperty(auto_now_add=True)
-	rate = db.IntegerProperty()
+	rate = db.IntegerProperty(default=0)
 
 
 class Person(db.Model):
