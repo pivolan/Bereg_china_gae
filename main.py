@@ -76,6 +76,11 @@ class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('main.html', persons=Person.all())
 
+@app.route('/k')
+class Index(BaseHandler):
+	def get(self):
+		return self.render_response('index.html')
+
 
 @app.route('/user/add/<name>/<description>')
 class UserAdd(BaseHandler):
