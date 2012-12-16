@@ -3,76 +3,156 @@
 <head>
 	<title>Выборы №81</title>
 	<link href="/public/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="/public/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+	<style type="text/css">
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+
+		.align-center {
+			text-align: center;
+		}
+
+		.align-right {
+			text-align: right;
+		}
+
+		.align-justify {
+			text-align: justify;
+		}
+	</style>
 </head>
 <body>
-<div class="nav navbar">
-	<div class="navbar-inner"><img src="http://placekitten.com/160/70" alt="Логотип"></div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="">Голосуй!</a>
+			<ul class="nav pull-right">
+				<li><a class="" href="">191</a></li>
+				<li>
+					<span>
+						<a href="" class="btn">Выход</a>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
 
-<div class="row well">
+<div class="container">
 	<div class="row">
-		<div class="span12">
-			<h1>Выборы председателя дома №81</h1>
+		<h1 class="span8 offset2 well align-center">Выборы председателя дома</h1>
+	</div>
+	<div class="row">
+		<div class="span6 offset3 well muted align-center">На этом сайте вы можете выбрать председателя дома №81.
+			Доступеы комментарии к каждому кандидату, и также оценки для комментариев и кандидатов. По истечении
+			голосования победителем будет набравший наибольшее количество положительных голосов.
 		</div>
 	</div>
-	<div class="row container">
-		<div id="myCarousel" class="carousel slide">
-			<!-- Carousel items -->
-			<div class="carousel-inner">
-				<div class="active item">
-					<ul class="thumbnails">
-						<li class="span3">
-							<div class="thumbnail">
-								<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
-								<span class="pull-right"><a class="green btn btn-mini" href="">+</a><span class="badge badge-success">2</span>/<span class="badge badge-important">6</span><a class="red" href="">-</a></span>
-								<span class="clearfix"></span>
-								<h3>Василий Зайцев</h3>
 
-								<p>Рыбы (лат. Pisces) - надкласс (в соответствии с современными принципами кладистики
-									-парафилетическая группа) водных позвоночных животных. </p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
-
-								<h3>Василий Зайцев</h3>
-
-								<p>Thumbnail caption...</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
-
-								<h3>Василий Зайцев</h3>
-
-								<p>Thumbnail caption...</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="thumbnail">
-								<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
-
-								<h3>Василий Зайцев</h3>
-
-								<p>Thumbnail caption...</p>
-							</div>
-						</li>
-					</ul>
+	<div class="accordion" id="accordion2">
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<div class="pull-left">
+					<div class="row">
+						<a class="btn btn-mini btn-success" href=""><i class="icon-plus-sign"></i><br>32</a></div>
+					<div class="row">
+						<a class="btn btn-mini btn-danger" href="">15<br><i class="icon-minus-sign"></i></a></div>
 				</div>
-				<div class="item span12">…</div>
-				<div class="item span12">…</div>
+				<div class="media">
+
+					<a class="accordion-toggle media pull-left" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+						<img class="media-object" data-src="holder.js/64x68"> </a>
+
+					<div class="media-body">
+						<h4 class="media-heading">Media heading</h4>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
+						commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
+						nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					</div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
-			<!-- Carousel nav -->
-			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			<div id="collapseOne" class="accordion-body collapse">
+				<div class="accordion-inner">
+					Anim pariatur cliche...
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+					Collapsible Group Item #2 </a>
+			</div>
+			<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					Anim pariatur cliche...
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+
+	<div id="myCarousel" class="carousel slide">
+		<!-- Carousel items -->
+		<div class="carousel-inner">
+			<div class="active item">
+				<ul class="thumbnails">
+					<li class="span3">
+						<div class="thumbnail">
+							<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
+							<span class="pull-right"><a class="green btn btn-mini" href="">+</a><span class="badge badge-success">2</span>/<span class="badge badge-important">6</span><a class="red" href="">-</a></span>
+							<span class="clearfix"></span>
+
+							<h3>Василий Зайцев</h3>
+
+							<p>Рыбы (лат. Pisces) - надкласс (в соответствии с современными принципами кладистики
+								-парафилетическая группа) водных позвоночных животных. </p>
+						</div>
+					</li>
+					<li class="span3">
+						<div class="thumbnail">
+							<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
+
+							<h3>Василий Зайцев</h3>
+
+							<p>Thumbnail caption...</p>
+						</div>
+					</li>
+					<li class="span3">
+						<div class="thumbnail">
+							<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
+
+							<h3>Василий Зайцев</h3>
+
+							<p>Thumbnail caption...</p>
+						</div>
+					</li>
+					<li class="span3">
+						<div class="thumbnail">
+							<img data-src="holder.js/260*180" src="http://placekitten.com/180/220" alt="">
+
+							<h3>Василий Зайцев</h3>
+
+							<p>Thumbnail caption...</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="item span12">…</div>
+			<div class="item span12">…</div>
+		</div>
+		<!-- Carousel nav -->
+		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+	<footer>
+		<p>&copy; Company 2012</p>
+	</footer>
 </div>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
+<script src="https://raw.github.com/imsky/holder/master/holder.js"></script>
 </body>
 </html>
