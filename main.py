@@ -43,3 +43,21 @@ class UserList(BaseHandler):
 class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('pages/poisk-proizvoditelei-i-tovarov-v-kitae.html')
+
+
+@app.route('/about-us')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('pages/about-us.html')
+
+
+@app.route('/contacts')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('pages/contacts.html')
+
+
+@app.route('/articles')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('pages/articles.html')
