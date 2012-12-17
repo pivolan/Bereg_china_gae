@@ -66,8 +66,8 @@ li#en { border-right:1px solid #787676;}
 .proSlider { border: 3px solid #c8c7c7; margin-bottom:15px;}
 #model-prod { padding:20px 25px 20px 45px;}
 #model-prod h2 { text-transform:uppercase; color:#f67027; font-size:36px; margin-bottom:20px;}
-#model-prod ul { list-style:none;}
-#model-prod li { position:relative; display:block; width:202px; height:285px; margin-right:15px; float:left; background:url(/public/img/service/libottom.gif) #fff repeat-x bottom; margin-bottom:20px;}
+#model-prod ul.products { list-style:none;}
+#model-prod ul.products li { position:relative; display:block; width:202px; height:285px; margin-right:15px; float:left; background:url(/public/img/service/libottom.gif) #fff repeat-x bottom; margin-bottom:20px;}
 #model-prod h3 a { display:block; color:#000; font-size:18px; padding:2px 5px 5px 5px; border-bottom: 1px solid #acacac; min-height:40px; margin:0px 5px 0px 5px;}
 #model-prod span { display:block;  padding:5px }
 #model-prod .tipo  { color:#005cff;}
@@ -95,7 +95,7 @@ a.fave { display:block; background: url(/public/img/service/more.png) no-repeat 
 
 #artigo, #artigoSec { background:#fff;}
 #artigo .post, #artigoSec .post {  margin:15px; padding:20px; }
-#artigo h2, #artigo h1,  #artigoSec h2 { color:#343434; font-size:24px; font-weight:lighter; display: block; margin-bottom:20px; text-transform:uppercase;}
+#artigo h2, #artigo h1,  #artigoSec h2, html body.osWindows div#wrapper div#content-990p div.content div#model-prod h2 { color:#343434; font-size:24px; font-weight:lighter; display: block; margin-bottom:20px; text-transform:uppercase;}
 #artigo p,  #artigoSec p { margin-bottom:20px; color:#343434; font-size:13px;}
 #artigoSec { margin-top:20px;}
 

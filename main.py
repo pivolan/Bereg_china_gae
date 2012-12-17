@@ -73,3 +73,9 @@ class UserList(BaseHandler):
 class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('pages/perevod-s-kitayskogo-i-na-kitayskiy-saytov-tekstov-dokumentov.html')
+
+
+@app.route('/termoplastavtomaty-kitay')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('tpa/termoplastavtomaty-kitay.html')

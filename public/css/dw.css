@@ -383,7 +383,15 @@ h3.cursos {
 	font-weight: bold;
 }
 html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p.end,
-html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post h2.end
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post h2.end,
+html body.osWindows div#wrapper div#content-990p div.content div#model-prod h2.end,
+html body.osWindows div#wrapper div#content-990p div.content div#model-prod p.end
 {
 	padding-top: 20px;;
+}
+html body.osWindows div#wrapper div#content-990p div.content div#model-prod ul li{
+	width: 419px;
+}
+html body.osWindows div#wrapper div#content-990p div.content div#model-prod p{
+	margin-bottom: 25px; font-size: 14px; line-height: 20px;
 }
