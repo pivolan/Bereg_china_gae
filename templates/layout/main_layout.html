@@ -73,7 +73,8 @@
 {% block rotate %}
 	{% include '_includes/rotate.html' %}
 {% endblock %}
-<div id="content-820p">
+{% set content_width = content_width|default('820p') %}
+<div id="content-{{ content_width }}">
 {% block submenu %}<h1 class="titlename top5">{% block h1 %}Equipment for{% endblock %}</h1>{% endblock %}
 
 <div class="content">
@@ -310,27 +311,12 @@
 		footerPics = new customFadingSlider('#footerPics', {slideSpeed:500, slideTimeout:15000, objectInstance:'footerPics', paginationList:'#footerpagination'});
 	});
 </script>
-
+{% block sidebar_list %}{% endblock %}
 <br class="c"/>
 </div>
 <!--/content-820-->
 {% block sidebar %}
-	<div id="sidebar"><h3 class="titlename top5 sideAds"><span>Мини заводы бетона</span></h3>
-		<a href="http://www.finamac.com.br/en/produtos/intermediario/maquina-sorvete-super-c"><img src="/public/img/right_pics/mini_zavody_betona.jpg" width="160" height="592" alt="Мини заводы бетона"/></a>
-
-		<div class="boxParceiro" style="margin-top: 17px;">
-			<h3 class="titlename top5 sideAds">Производство плитки</h3>
-			<a href="http://www.finamac.com.br/en/produtos/industrial/maquina-sorvete-turbo-100"><img src="/public/img/right_pics/proizvodstvo_plitki.jpg" width="160" height="145" alt="Производство плитки"/></a>
-		</div>
-		<div class="boxParceiro" style="margin-top: 15px; margin-bottom: 1px;">
-			<h3 class="titlename top5 sideAds">Производство пленки</h3>
-			<a href="http://www.finamac.com.br/en/produtos/intermediario/maquina-sorvete-super-c2"><img src="/public/img/right_pics/proizvodstvo_plenki.jpg" width="160" height="145" alt="Производство пленки"/></a>
-		</div>
-		<div class="boxParceiro" style="margin-top: 15px; margin-bottom: 1px;">
-			<h3 class="titlename top5 sideAds">Выдувное оборудование</h3>
-			<a href="http://www.finamac.com.br/en/produtos/industrial/maquina-sorvete-titan-12"><img src="/public/img/right_pics/vyduvnoye_oborudovanie.jpg" width="160" height="145" alt="Выдувное оборудование"/></a>
-		</div>
-	</div>
+	{% include '_includes/sidebar.html' %}
 {% endblock %}
 <br class="c"/>
 </div>
