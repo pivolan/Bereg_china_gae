@@ -31,3 +31,15 @@ class UserList(BaseHandler):
 class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('pages/oborudovanie-iz-kitaia.html')
+
+
+@app.route('/uslugi-kompanii-bereg')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('pages/uslugi-kompanii-bereg.html')
+
+
+@app.route('/poisk-proizvoditelei-i-tovarov-v-kitae')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('pages/poisk-proizvoditelei-i-tovarov-v-kitae.html')

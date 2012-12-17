@@ -382,6 +382,8 @@ h3.cursos {
 	font-size: 14px;
 	font-weight: bold;
 }
-html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p.end{
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p.end,
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post h2.end
+{
 	padding-top: 20px;;
 }
