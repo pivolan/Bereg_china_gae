@@ -95,7 +95,7 @@ a.fave { display:block; background: url(/public/img/service/more.png) no-repeat 
 
 #artigo, #artigoSec { background:#fff;}
 #artigo .post, #artigoSec .post {  margin:15px; padding:20px; }
-#artigo h2,  #artigoSec h2 { color:#343434; font-size:24px; font-weight:lighter; display: block; margin-bottom:20px; text-transform:uppercase;}
+#artigo h2, #artigo h1,  #artigoSec h2 { color:#343434; font-size:24px; font-weight:lighter; display: block; margin-bottom:20px; text-transform:uppercase;}
 #artigo p,  #artigoSec p { margin-bottom:20px; color:#343434; font-size:13px;}
 #artigoSec { margin-top:20px;}
 
