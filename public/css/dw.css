@@ -403,3 +403,6 @@ html body.osWindows div#wrapper div#content-990p div.content div#model-prod ul.p
 	color: blue;
 	text-decoration: none;
 }
+html body.osWindows div#wrapper div#content-990p div#sidebar{
+	padding-top: 15px;
+}
