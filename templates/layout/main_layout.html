@@ -159,10 +159,12 @@
 	{% endblock %}
 </div>
 <!--/content-->
-<script>$(document).ready(function () {
-	headPics = new customFadingSlider('#headPics', {slideSpeed:500, slideTimeout:10000, objectInstance:'headPics', paginationList:'#paginatepics'});
-	produtoHome = new sliderProdutoHome({ objectInstance:'produtoHome' });
-});</script>
+{% block scripts %}
+	<script>$(document).ready(function () {
+		headPics = new customFadingSlider('#headPics', {slideSpeed:500, slideTimeout:10000, objectInstance:'headPics', paginationList:'#paginatepics'});
+		produtoHome = new sliderProdutoHome({ objectInstance:'produtoHome' });
+	});</script>
+{% endblock %}
 {% block footer_content %}
 	<div class="footerContent">
 		<ul class="lista3-col">

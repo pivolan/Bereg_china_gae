@@ -79,3 +79,9 @@ class UserList(BaseHandler):
 class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('tpa/termoplastavtomaty-kitay.html')
+
+
+@app.route('/termoplastavtomat-yj800')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('tpa/yj800.html')
