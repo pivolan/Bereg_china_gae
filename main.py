@@ -96,5 +96,6 @@ class Table(BaseHandler):
 		[span.replaceWith(span.renderContents()) for span in html.findAll('p')]
 		for tag in html.findAll(True):
 			tag.attrs = None
-		return self.response.write(html.renderContents())
+		self.response.headers['Content-Type'] = 'text/plain; charset=UTF-8'
+		self.response.out.write(html.renderContents())
 
