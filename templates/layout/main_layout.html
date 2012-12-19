@@ -13,6 +13,7 @@
 	<link href="/public/css/estilo.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="/public/css/dw.css" rel="stylesheet" type="text/css" media="screen"/>
 	<link href="/public/css/plugins/shadowbox.css" rel="stylesheet" type="text/css" media="screen"/>
+	{% block css %}{% endblock %}
 	<script>var basePath = '/';
 	var currLang = 'en';
 	var headPics;
@@ -46,8 +47,7 @@
 			<input name="palavra" type="text" value=""/> <input type="submit" value=" "/>
 		</form>
 	</div>
-	<h3>Online chat ::</h3>
-	<br class="c"/>
+	<h3>Online chat ::</h3>	<br class="c"/>
 
 	{# навигация #}
 	{% block navigation %}
@@ -298,8 +298,7 @@
 		footerPics = new customFadingSlider('#footerPics', {slideSpeed:500, slideTimeout:15000, objectInstance:'footerPics', paginationList:'#footerpagination'});
 	});
 </script>
-{% block sidebar_list %}{% endblock %}
-<br class="c"/>
+{% block sidebar_list %}{% endblock %} <br class="c"/>
 </div>
 <!--/content-820-->
 {% block sidebar %}

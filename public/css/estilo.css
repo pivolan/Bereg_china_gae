@@ -115,7 +115,7 @@ a.fave { display:block; background: url(/public/img/service/more.png) no-repeat 
 .contentTab img { float:left; max-width:530px;}
 .contentTab .desc { float:right; width:190px; padding:20px;}
 .desc h3 { color:#828081; margin:35px 0 0 0} .desc p { color:#1c5fae;}
-.desc h3, .desc p { font-size:20px; text-align:left; text-transform:uppercase; font-weight:lighter; margin: 0 0 0 10px; }
+.desc h3, .desc p { font-size:15px; text-align:left; text-transform:uppercase; font-weight:lighter; margin: 0 0 0 10px; }
 .sliderHolder { background:#e1dcdf; padding:15px 0px 15px 0; }
 .contentTab a.maisDestaque { display: block; background:url(/public/img/service/more.png); width:17px; height:17px; text-indent:-9999px; position:absolute; left:740px; top:250px; }
 .lista3-col { display:block; list-style:none; margin:15px 0px 15px 0px; }

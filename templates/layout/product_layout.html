@@ -1,4 +1,7 @@
 {% extends 'layout/main_layout.html' %}{% block rotate %}{% endblock %}{% block scripts %}{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="/public/css/table.css">
+{% endblock %}
 {% block content %}
 	<div class="leftContent">
 		<div class="proSlider">
@@ -23,9 +26,7 @@
 				</script>
 
 				<div class="desc">
-					<h3>{% block title_image %}{% endblock %}</h3>
-
-					<p>{% block desc_top %}Complete kit to produce popsicles{% endblock %}</p>
+					<p>{% block desc_top %}Экономичные, надежные и высокотехнологичные термопластавтоматы из Китая{% endblock %}</p>
 				</div>
 				<ul id="paginatepics"></ul>
 				<br class="c"/>
