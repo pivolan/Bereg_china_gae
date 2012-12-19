@@ -1,4 +1,9 @@
 {% extends 'layout/main_layout.html' %}{% block rotate %}{% endblock %}{% block scripts %}{% endblock %}
+{% block navigation %}
+	{% set a4="openMenu" %}
+	{% set a4b1="openMenu" %}
+	{% include '_includes/nav.html' %}
+{% endblock %}
 {% block css %}
 	<link rel="stylesheet" href="/public/css/table.css">
 {% endblock %}
