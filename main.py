@@ -87,15 +87,22 @@ class UserList(BaseHandler):
 	def get(self, model):
 		return self.render_response('tpa/%s.html' % model)
 
+
 @app.route('/table')
 class Table(BaseHandler):
-	def get(self):
-		rv = self.jinja2.render_template('pages/table.txt')
+	def post(self):
+		rv = self.request.POST['txt']
 		html = BeautifulStoneSoup(rv)
 		[span.replaceWith(span.renderContents()) for span in html.findAll('span')]
 		[span.replaceWith(span.renderContents()) for span in html.findAll('p')]
+		for tr in html.findAll('tr'):
+			tr.find('td').name = 'th'
+		for td in html.find('tr').findAll('td'):
+			td.name = 'th'
+
 		for tag in html.findAll(True):
 			tag.attrs = None
-		self.response.headers['Content-Type'] = 'text/plain; charset=UTF-8'
-		self.response.out.write(html.renderContents())
+		return self.render_response('pages/table.html', html=html.renderContents().decode('utf8'))
 
+	def get(self):
+		return self.render_response('pages/table.html', html='')
