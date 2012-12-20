@@ -106,6 +106,8 @@ class Table(BaseHandler):
 		[tag.extract() for tag in html.findAll('a')]
 		for tag in html.findAll('span', style=re.compile("text-decoration:underline")):
 			tag.name = 'a'
+		for tag in html.findAll('span', style=re.compile("font-style:italic;")):
+			tag.name = 'em'
 		for tag in html.findAll('span', style=re.compile("font-weight:bold")):
 			tag.name = 'strong'
 			tag.attrs = []
