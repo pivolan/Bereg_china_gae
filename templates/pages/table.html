@@ -1,5 +1,6 @@
 <form action="" method="post">
-	<textarea name="txt" id="txt" cols="30" rows="10">{{ html }}</textarea>
-	<input type="submit" value="send">
+	<textarea name="txt" id="txt" cols="30" rows="10">{{ html }}</textarea> <input type="submit" value="send">
 </form>
-{{ html|safe }}
+<div>
+	{{ html|safe }}
+</div>

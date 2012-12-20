@@ -6,7 +6,7 @@ import re
 
 config = {}
 config['webapp2_extras.sessions'] = {
-	'secret_key': '321ertrere5',
+'secret_key': '321ertrere5',
 }
 app = WSGIApplication(debug=True,
                       config=config)
@@ -95,19 +95,23 @@ class Table(BaseHandler):
 		rv = self.request.POST['txt']
 		html = BeautifulStoneSoup(rv, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
 		html.find('title').extract()
+		#clean all p tags in table
+		table = html.find('table')
+		[span.replaceWith(span.renderContents()) for span in table.findAll('span')]
+		[span.replaceWith(span.renderContents()) for span in table.findAll('p')]
+
 		[span.extract() for span in html.findAll('a')]
 		for span in html.findAll('span', style=re.compile("text-decoration:underline")):
 			span.name = 'a'
 		for span in html.findAll('span', style=re.compile("font-weight:bold")):
 			span.name = 'strong'
+			span.attrs = []
 		for tag in html.findAll('p'):
-			for strong in tag.findAll('strong', text=re.compile("H2 ?.* H2")):
+			for span in tag.findAll('strong', text=re.compile("H2 ?.* H2")):
 				tag.name = 'h2'
-
+				tag.string = span.replace('H2 ', '').replace(' H2', '')
 		#clean all span tags
 		[span.replaceWith(span.renderContents()) for span in html.findAll('span')]
-		#clean all p tags in table
-		[span.replaceWith(span.renderContents()) for span in html.find(['table', 'h2']).findAll(['p', 'strong'])]
 		#set header to table, and th tags instead of td for titles
 		for tr in html.findAll('tr'):
 			tr.find('td').name = 'th'
@@ -127,7 +131,8 @@ class Table(BaseHandler):
 		for tag in html.findAll('a'):
 			tag.attrs = [('href', '')]
 
-		return self.render_response('pages/table.html', html=html.body.renderContents().decode('utf8'))
+		return self.render_response('pages/table.html',
+		                            html=html.body.renderContents().replace('</img>', '').replace('<p></p>', '').decode('utf8'))
 
 	def get(self):
 		return self.render_response('pages/table.html', html='')
