@@ -115,12 +115,12 @@ class Table(BaseHandler):
 		#set header to table, and th tags instead of td for titles
 		for tr in html.findAll('tr'):
 			tr.find('td').name = 'th'
-		for td in html.find('tr').findAll('td'):
-			td.name = 'th'
-
-		thead = Tag(html, name='thead')
-		thead.insert(0, html.find('tr'))
-		html.find('table').insert(0, thead)
+		if html.find('tr'):
+			for td in html.find('tr').findAll('td'):
+				td.name = 'th'
+			thead = Tag(html, name='thead')
+			thead.insert(0, html.find('tr'))
+			html.find('table').insert(0, thead)
 		#erase all attrs for all tags
 		for tag in html.findAll(True):
 			tag.attrs = []
