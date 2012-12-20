@@ -89,6 +89,12 @@ class UserList(BaseHandler):
 		return self.render_response('tpa/%s.html' % model)
 
 
+@app.route('/ekstruzionno-vyduvnye-mashiny')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('extr/ekstruzionno-vyduvnye-mashiny.html')
+
+
 @app.route('/table')
 class Table(BaseHandler):
 	def post(self):
