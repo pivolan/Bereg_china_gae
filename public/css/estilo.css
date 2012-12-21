@@ -1,8 +1,3 @@
-
-/* CSS Finamac  */
-/* Jan/2011  */
-/* by andrebeltrame */
-
 /* reset */
 * { margin:0; padding:0; border:0;}
 .c { clear:both}
@@ -275,11 +270,11 @@ a.fave { display:block; background: url(/public/img/service/more.png) no-repeat 
 /*Formulario*/
 .label_template { float: left; padding: 0 1px; margin: 0 0 0 10px; }
 
-.img_a {background:url(http://www.finamac.com.br/imagens/for_sorvete.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
-.img_b {background:url(http://www.finamac.com.br/imagens/for_picoles.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
-.img_c {background:url(http://www.finamac.com.br/imagens/for_gelato.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
-.img_d {background:url(http://www.finamac.com.br/imagens/for_chocolate.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
-.img_e {background:url(http://www.finamac.com.br/imagens/for_outros.png); background-repeat: no-repeat; background-position: 10px 34px;height:150px}
+.img_a {background:url(http:///imagens/for_sorvete.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
+.img_b {background:url(http:///imagens/for_picoles.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
+.img_c {background:url(http:///imagens/for_gelato.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
+.img_d {background:url(http:///imagens/for_chocolate.png); background-repeat: no-repeat; background-position: 10px 34px;height:109px}
+.img_e {background:url(http:///imagens/for_outros.png); background-repeat: no-repeat; background-position: 10px 34px;height:150px}
 
 .label_form { border-bottom: 21px solid #CCC; width: 110px; height: 80px; margin: 10px 0 0 10px; float: left; }
 .label_form input{ margin:60px 0 0 50px ; }
