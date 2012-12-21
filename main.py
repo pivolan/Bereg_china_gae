@@ -95,6 +95,12 @@ class UserList(BaseHandler):
 		return self.render_response('extr/ekstruzionno-vyduvnye-mashiny.html')
 
 
+@app.route('/ekstruzionno_vyduvnoi_avtomat_dhd-1lii')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('extr/ekstruzionno_vyduvnoi_avtomat_dhd-1lii.html')
+
+
 @app.route('/table')
 class Table(BaseHandler):
 	def post(self):
