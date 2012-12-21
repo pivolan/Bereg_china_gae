@@ -392,12 +392,14 @@ html body.osWindows div#wrapper div#content-990p div.content div#model-prod p{
 	margin-bottom: 25px; font-size: 14px; line-height: 20px;
 }
 html body.osWindows div#wrapper div#content-990p div.content div#model-prod ul.products li span.desc a,
-html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p a{
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p a,
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post ul li a{
 	color: blue;
 	text-decoration: underline;
 }
 html body.osWindows div#wrapper div#content-990p div.content div#model-prod ul.products li span.desc a:hover,
-html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p a:hover{
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post p a:hover,
+html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post ul li a:hover{
 	color: blue;
 	text-decoration: none;
 }
