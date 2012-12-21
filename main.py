@@ -142,9 +142,9 @@ class Table(BaseHandler):
 			tag.name = 'strong'
 			tag.attrs = []
 		for tag in html.findAll('p'):
-			for tag in tag.findAll('strong', text=re.compile("H2 ?.* H2")):
+			for title in tag.findAll(text=re.compile("H2 ")):
 				tag.name = 'h2'
-				tag.string = tag.replace('H2 ', '').replace(' H2', '')
+				tag.string = title.replace('H2', '').strip()
 		#clean all span tags
 		[tag.replaceWith(tag.renderContents()) for tag in html.findAll('span')]
 		#set header to table, and th tags instead of td for titles
