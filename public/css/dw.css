@@ -321,12 +321,14 @@ h3.cursos {
 	max-height: 290px !important;
 }
 
-#header h1 a {
+#header div.logo a {
 	display: block;
-	background: url(/public/img/service/logo.jpg) !important;
+	background: url(/public/img/service/logo.png) no-repeat !important;
 	width: 280px;
-	height: 50px;
+	height: 68px;
 	float: left;
+	position: relative;
+	top: -10px;
 	text-indent: -9999px;
 	margin: 0px !important;
 }
