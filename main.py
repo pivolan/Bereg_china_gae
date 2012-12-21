@@ -101,6 +101,18 @@ class UserList(BaseHandler):
 		return self.render_response('extr/ekstruzionno_vyduvnoi_avtomat_dhd-1lii.html')
 
 
+@app.route('/dhd-qr100-oborudovanie_dlia_proizvodstva_plastikovoi_tary')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('extr/dhd-qr100-oborudovanie_dlia_proizvodstva_plastikovoi_tary.html')
+
+
+@app.route('/seriia_vyduvnykh_mashin_dhd-l-a_dlia_proizvodstva_plastikovoi_tary')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('extr/seriia_vyduvnykh_mashin_dhd-l-a_dlia_proizvodstva_plastikovoi_tary.html')
+
+
 @app.route('/table')
 class Table(BaseHandler):
 	def post(self):
@@ -147,9 +159,10 @@ class Table(BaseHandler):
 
 		for tag in html.findAll('a'):
 			tag.attrs = [('href', '')]
-
+		if html.body:
+			html = html.body
 		return self.render_response('pages/table.html',
-		                            html=html.body.renderContents().replace('</img>', '').replace('<p></p>', '').decode(
+		                            html=html.renderContents().replace('</img>', '').replace('<p></p>', '').decode(
 			                            'utf8'))
 
 	def get(self):
