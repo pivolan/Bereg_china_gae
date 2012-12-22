@@ -168,7 +168,7 @@ a.fave { display:block; background: url(/public/img/service/more.png) no-repeat 
 #footer .links a { text-decoration:none;}
 #footer .links li a { text-decoration:none; text-transform:lowercase; color:#d1d1d1; font-size:14px; padding-right:10px;}
 #footer .links li a:hover { border-bottom:1px dotted #d1d1d1}
-#footer .links div, #footer .links div a { text-transform:uppercase; color:#96bcff; font-size:14px; display:block; margin:0px 0px 10px 0px}
+#footer .links a { text-transform:uppercase; color:#96bcff; font-size:14px; display:block; margin:0px 0px 10px 0px}
 
 
 
