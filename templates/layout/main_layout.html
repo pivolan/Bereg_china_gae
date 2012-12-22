@@ -39,15 +39,16 @@
 
 	<div class="r">
 		<ol id="lang">
-			<li><a href="/es/">Español</a></li>
-			<li id="en"><a href="/en/" class="current">English</a></li>
-			<li id="br"><a href="/br/">Português</a></li>
+			<li><a href="#">Español</a></li>
+			<li id="en" class="lang"><a href="/" class="current">English</a></li>
+			<li id="br" class="lang"><a href="#">Português</a></li>
 		</ol>
-		<form id="searchform" action="/en/busca" method="get">
-			<input name="palavra" type="text" value=""/> <input type="submit" value=" "/>
+		<form id="searchform" action="/" method="get">
+			<input name="search[text]" type="text" value=""/>
+			<input type="submit" value=" "/>
 		</form>
 	</div>
-	<h3>Online chat ::</h3>	<br class="c"/>
+	<br class="c"/>
 
 	{# навигация #}
 	{% block navigation %}
