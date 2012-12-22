@@ -125,6 +125,12 @@ class UserList(BaseHandler):
 		return self.render_response('extr/dhb-80-100.html')
 
 
+@app.route('/dhb-250a_dhb-250b_dhb-500_dhb-1000-oborudovanie_dlia_proizvodstva_plastikovykh_bochek')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('extr/dhb-250-1000.html')
+
+
 @app.route('/table')
 class Table(BaseHandler):
 	def post(self):
