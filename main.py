@@ -140,7 +140,7 @@ class UserList(BaseHandler):
 @app.route('/ekstruzionno_vyduvnaia_mashina_dhd-30lii')
 class UserList(BaseHandler):
 	def get(self):
-		return self.render_response('extr/dhd-2lii-16lii.html')
+		return self.render_response('extr/dhd-30lii.html')
 
 
 @app.route('/table')
