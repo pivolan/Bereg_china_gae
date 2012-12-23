@@ -113,7 +113,7 @@ class UserList(BaseHandler):
 		return self.render_response('extr/seriia_vyduvnykh_mashin_dhd-l-a_dlia_proizvodstva_plastikovoi_tary.html')
 
 
-@app.route('/dhb-82pc–oborudovanie_dlia_proizvodstva_butylei')
+@app.route('/dhb-82pc-oborudovanie_dlia_proizvodstva_butylei')
 class UserList(BaseHandler):
 	def get(self):
 		return self.render_response('extr/dhb-82pc.html')

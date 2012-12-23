@@ -408,19 +408,19 @@ html body.osWindows div#wrapper div#content-820p div.content div#artigo div.post
 html body.osWindows div#wrapper div#content-990p div#sidebar{
 	padding-top: 15px;
 }
-label{
+.uni_form label{
 	font-weight: bold;
 }
-input{
+.uni_form input{
 	border: 1px solid;
 	display: block;
 }
-textarea{
+.uni_form textarea{
 	width: 300px;
 	height: 200px;
 	border: 1px solid;
 	display: block;
 }
-input.button{
+.uni_form input.button{
 	border: 0;
 }
