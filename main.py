@@ -143,6 +143,12 @@ class UserList(BaseHandler):
 		return self.render_response('extr/dhd-30lii.html')
 
 
+@app.route('/sitemap')
+class UserList(BaseHandler):
+	def get(self):
+		return self.render_response('pages/sitemap.html')
+
+
 @app.route('/table')
 class Table(BaseHandler):
 	def post(self):

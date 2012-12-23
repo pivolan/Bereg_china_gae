@@ -34,28 +34,30 @@
 </head>
 <body>
 <div id="wrapper">
-<div id="header">
-	<div class="logo"><a href="/">Bereg</a></div>
+{% block header %}
+	<div id="header">
+		<div class="logo"><a href="/">Bereg</a></div>
 
-	<div class="r">
-		<ol id="lang">
-			<li><a href="#">Español</a></li>
-			<li id="en" class="lang"><a href="/" class="current">English</a></li>
-			<li id="br" class="lang"><a href="#">Português</a></li>
-		</ol>
-		<form id="searchform" action="/" method="get">
-			<input name="search[text]" type="text" value=""/>
-			<input type="submit" value=" "/>
-		</form>
+		<div class="r">
+			<ol id="lang">
+				<li><a href="#">Español</a></li>
+				<li id="en" class="lang"><a href="/" class="current">English</a></li>
+				<li id="br" class="lang"><a href="#">Português</a></li>
+			</ol>
+			<form id="searchform" action="/" method="get">
+				<input name="search[text]" type="text" value=""/>
+				<input type="submit" value=" "/>
+			</form>
+		</div>
+		<br class="c"/>
+
+		{# навигация #}
+		{% block navigation %}
+			{% include '_includes/nav.html' %}
+		{% endblock %}
 	</div>
-	<br class="c"/>
-
-	{# навигация #}
-	{% block navigation %}
-		{% include '_includes/nav.html' %}
-	{% endblock %}
-</div>
-<!--/header-->
+	<!--/header-->
+{% endblock %}
 {% block rotate %}
 	{% include '_includes/rotate.html' %}
 {% endblock %}
@@ -174,6 +176,8 @@
 {% endblock %}
 <br class="c"/>
 </div>
-{% include '_includes/footer.html' %}
+{% block footer %}
+	{% include '_includes/footer.html' %}
+{% endblock %}
 </body>
 </html>
