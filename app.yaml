@@ -9,6 +9,10 @@ handlers:
   static_files: public/sitemap.xml
   upload: public/sitemap.xml
 
+- url: /robots.txt
+  static_files: public/robots.txt
+  upload: public/robots.txt
+
 - url: /public
   static_dir: public
 

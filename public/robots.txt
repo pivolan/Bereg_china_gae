@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /articles.php
+
+User-agent: Yandex
+Disallow: /articles.php
+
+Host: bereg-cn.ru
+Sitemap: /sitemap.xml
