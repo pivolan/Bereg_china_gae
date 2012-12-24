@@ -80,10 +80,9 @@
 					$(item).remove();
 				}
 			});
-			$pq.find('p:first').before('{% block prod_desc %}');
+			$pq.find('p:first').before('\n{% block prod_desc %}\n');
 
-				$pq.find('p:last').after('{% endblock %}');
-			console.log($table);
+				$pq.find('p:last').after('\n{% endblock %}');
 			$('#res').val($pq.html().replace(/&nbsp;/g, ' ')).select();
 		});
 	{% endraw %}
