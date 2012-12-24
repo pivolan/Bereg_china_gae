@@ -75,7 +75,7 @@
 			});
 			$pq.find('*').removeAttr('style');
 			$pq.find('a[name]').remove();
-			$pq.find('p').each(function (index, item) {
+			$pq.find('p, em, strong').each(function (index, item) {
 				if ($.trim($(item).text()) === "") {
 					$(item).remove();
 				}
@@ -83,7 +83,7 @@
 			$pq.find('p:first').before('\n{% block prod_desc %}\n');
 
 				$pq.find('p:last').after('\n{% endblock %}');
-			$('#res').val($pq.html().replace(/&nbsp;/g, ' ')).select();
+			$('#res').val($pq.html().replace(/&nbsp;/g, ' ').replace(/<\/em>\s*<em>/, '').replace(/<\/strong>\s*<strong>/, '')).select();
 		});
 	{% endraw %}
 </script>
