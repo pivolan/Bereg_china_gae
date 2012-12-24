@@ -2,6 +2,7 @@
 # -*- coding: utf8 -*-
 from libs.libs import WSGIApplication, BaseHandler
 from libs.BeautifulSoup import BeautifulStoneSoup, Tag
+from libs.pyquery.pyquery import PyQuery as pq
 import re
 
 config = {}
@@ -178,6 +179,9 @@ class Table(BaseHandler):
 			for title in tag.findAll(text=re.compile("H3 ")):
 				tag.name = 'h2'
 				tag.string = title.replace('H3', '').strip()
+			for title in tag.findAll(text=re.compile("Title.*")):
+				tag.replaceWith(tag.renderContents())
+
 
 		#clean all span tags
 		[tag.replaceWith(tag.renderContents()) for tag in html.findAll('span')]
@@ -203,6 +207,18 @@ class Table(BaseHandler):
 			html = html.body
 		return self.render_response('pages/table.html',
 		                            html=html.renderContents().replace('</img>', '').replace('<p></p>', '').decode(
+			                            'utf8'))
+
+	def get(self):
+		return self.render_response('pages/table.html', html='')
+
+@app.route('/table2')
+class Table(BaseHandler):
+	def post(self):
+		rv = self.request.POST['txt']
+		html = pq(rv)
+		return self.render_response('pages/table.html',
+		                            html=html.text().replace('</img>', '').replace('<p></p>', '').decode(
 			                            'utf8'))
 
 	def get(self):
