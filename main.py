@@ -216,3 +216,9 @@ class Table(BaseHandler):
 class Table(BaseHandler):
 	def get(self):
 		return self.render_response('pages/table2.html', html='')
+
+@app.route('/test')
+class Table(BaseHandler):
+	def get(self):
+		host = self.request.host
+		return self.render_json([host])

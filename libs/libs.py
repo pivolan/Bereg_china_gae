@@ -23,6 +23,9 @@ class BaseHandler(webapp2.RequestHandler):
 		self.response.out.write(json.encode(_json))
 
 	def dispatch(self):
+		if self.request.host != 'pivolan.ru:8080' and self.request.host != 'bereg-china.ru':
+			exit()
+
 		# Get a session store for this request.
 		self.session_store = sessions.get_store(request=self.request)
 
