@@ -214,12 +214,5 @@ class Table(BaseHandler):
 
 @app.route('/table2')
 class Table(BaseHandler):
-	def post(self):
-		rv = self.request.POST['txt']
-		html = pq(rv)
-		return self.render_response('pages/table.html',
-		                            html=html.text().replace('</img>', '').replace('<p></p>', '').decode(
-			                            'utf8'))
-
 	def get(self):
-		return self.render_response('pages/table.html', html='')
+		return self.render_response('pages/table2.html', html='')

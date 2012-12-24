@@ -1,0 +1,102 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<form action="" method="post">
+	<textarea name="txt" id="txt" cols="30" rows="10"></textarea> <input id="submit" type="button" value="send">
+
+	<p><textarea name="txt" id="res" cols="30" rows="10"></textarea></p>
+</form>
+<div id="text"></div>
+<pre id="pre"></pre>
+<script type="text/javascript">
+	{% raw %}
+		$('#submit').click(function (evt) {
+			evt.preventDefault();
+			var text = $('#txt').val();
+			$('#text').html(text);
+			var $pq = $('#text');
+			var $table = $pq.find('table:first');
+			$pq.find('title').remove();
+			$pq.find('p>span[style*="bold"]:contains("H1")').parent().each(function (index, item) {
+				var $item = $(item);
+				var text = $item.text().replace(/H1/g, '').trim();
+				$item.replaceWith('{% block h1 %}'+ text +'{% endblock %}');
+			});
+			$pq.find('p>span[style*="bold"]:contains("H2")').parent().each(function (index, item) {
+				var $item = $(item);
+				var text = $item.text().replace(/H2/g, '').trim();
+				$item.replaceWith('<h2>' + text + '</h2>');
+			});
+			$pq.find('p>span:contains("Title")').parent().each(function (index, item) {
+				var $item = $(item);
+				var text = $item.text().replace(/Title/g, '').trim();
+				$item.replaceWith('{% block title %}'+ text +'{% endblock %}\n');
+			});
+			$pq.find('p>span:contains("Keywords")').parent().each(function (index, item) {
+				var $item = $(item);
+				var text = $item.text().replace(/Keywords/g, '').trim();
+				$item.replaceWith('{% block keywords %}'+ text +'{% endblock %}\n');
+			});
+			$pq.find('p>span:contains("Description")').parent().each(function (index, item) {
+				var $item = $(item);
+				var text = $item.text().replace(/Description/g, '').trim();
+				$item.replaceWith('{% block description %}'+ text +"{% endblock %}\n");
+			});
+
+			$table.find('td').each(function (index, item) {
+				var $item = $(item);
+				$item.html($item.text());
+			});
+			$table.find('tr:first').find('td').each(function (index, item) {
+				var $item = $(item);
+				$item.replaceWith('<th>' + $item.text() + '</th>');
+			});
+			$table.find('tr').find('td:first').each(function (index, item) {
+				var $item = $(item);
+				$item.replaceWith('<th>' + $item.text() + '</th>');
+			});
+			$table.prepend('<thead></thead>');
+			$table.find('thead').append($table.find('tr:first'));
+			$table.removeAttr('cellpadding').removeAttr('cellspacing');
+
+			$pq.find('span[style*="font-style:italic"]').each(function (index, item) {
+				var $item = $(item);
+				$item.replaceWith('<em>' + $item.text() + '</em>');
+			});
+			$pq.find('span[style*="font-weight:bold"]').each(function (index, item) {
+				var $item = $(item);
+				$item.replaceWith('<strong>' + $item.text() + '</strong>');
+			});
+			$pq.find('span[style*="text-decoration:underline"]').each(function (index, item) {
+				var $item = $(item);
+				$item.replaceWith('<a href="">' + $item.text() + '</a>');
+			});
+			$pq.find('span').each(function (index, item) {
+				var $item = $(item);
+				$item.replaceWith($item.text());
+			});
+			$pq.find('*').removeAttr('style');
+			$pq.find('a[name]').remove();
+			$pq.find('p').each(function (index, item) {
+				if ($.trim($(item).text()) === "") {
+					$(item).remove();
+				}
+			});
+			$pq.find('p:first').before('{% block prod_desc %}');
+
+				$pq.find('p:last').after('{% endblock %}');
+			console.log($table);
+			$('#res').val($pq.html().replace(/&nbsp;/g, ' ')).select();
+		});
+	{% endraw %}
+</script>
+<style type="text/css">
+	pre {
+		background: #e0ffff;
+		border: 1px solid;
+	}
+
+	#text {
+		background: #add8e6;
+		border: 1px solid;
+	{#		display: none;#}
+	}
+</style>
