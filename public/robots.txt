@@ -4,5 +4,5 @@ Disallow: /articles.php
 User-agent: Yandex
 Disallow: /articles.php
 
-Host: bereg-china.ru
-Sitemap: http://bereg-china.ru/sitemap.xml
+Host: www.bereg-china.ru
+Sitemap: http://www.bereg-china.ru/sitemap.xml
