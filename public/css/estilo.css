@@ -144,22 +144,22 @@ a.fave { display:block; background: url(/public/img/service/more.png) no-repeat 
 
 #sociais { display:block; list-style:none; float:right; margin-top:-25px;}
 #sociais li { display: block; float:left; }
-#sociais a { display:block; float:left; margin-left:10px; width:47px; height:47px; background:url(/public/img/service/sociais.png) no-repeat; text-indent:-9999px;}
-#sociais .fl a { background-position: 0px 0px;}
-#sociais .yt a { background-position: -54px 0px;}
-#sociais .rss a { background-position: -110px 0px;}
-#sociais .wp a { background-position: -165px 0px;}
-#sociais .tw a { background-position: -220px 0px;}
-#sociais .fb a { background-position: -275px 0px;}
-#sociais .you a { background-position: -439px 0px;}
+#sociais span { display:block; float:left; margin-left:10px; width:47px; height:47px; background:url(/public/img/service/sociais.png) no-repeat; text-indent:-9999px; cursor: pointer;}
+#sociais .fl span { background-position: 0px 0px;}
+#sociais .yt span { background-position: -54px 0px;}
+#sociais .rss span { background-position: -110px 0px;}
+#sociais .wp span { background-position: -165px 0px;}
+#sociais .tw span { background-position: -220px 0px;}
+#sociais .fb span { background-position: -275px 0px;}
+#sociais .you span { background-position: -439px 0px;}
 
-#sociais .fl a:hover { background-position: 0px bottom;}
-#sociais .yt  a:hover { background-position: -54px bottom;}
-#sociais .rss  a:hover { background-position: -110px bottom;}
-#sociais .wp  a:hover { background-position: -165px bottom;}
-#sociais .tw  a:hover { background-position: -220px bottom;}
-#sociais .fb  a:hover { background-position: -275px bottom;}
-#sociais .you  a:hover { background-position: -439px bottom;}
+#sociais .fl span:hover { background-position: 0px bottom;}
+#sociais .yt  span:hover { background-position: -54px bottom;}
+#sociais .rss  span:hover { background-position: -110px bottom;}
+#sociais .wp  span:hover { background-position: -165px bottom;}
+#sociais .tw  span:hover { background-position: -220px bottom;}
+#sociais .fb  span:hover { background-position: -275px bottom;}
+#sociais .you  span:hover { background-position: -439px bottom;}
 
 
 
