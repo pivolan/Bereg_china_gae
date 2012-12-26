@@ -427,3 +427,12 @@ html body.osWindows div#wrapper div#content-990p div#sidebar{
 .center{
 	text-align: center;
 }
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.footer a{
+	color: #96BCFF;
+}
