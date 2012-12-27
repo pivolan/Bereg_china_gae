@@ -9,7 +9,7 @@ config = {}
 config['webapp2_extras.sessions'] = {
 	'secret_key': '321ertrere5',
 }
-app = WSGIApplication(debug=True,
+app = WSGIApplication(debug=False,
                       config=config)
 
 @app.route('/')
