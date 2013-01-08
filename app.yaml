@@ -13,6 +13,14 @@ handlers:
   static_files: public/robots.txt
   upload: public/robots.txt
 
+- url: /yandex_5489af98dfdf2ed3.txt
+  static_files: public/yandex_5489af98dfdf2ed3.txt
+  upload: public/yandex_5489af98dfdf2ed3.txt
+
+- url: /google3b473792790f59d0.html
+  static_files: public/google3b473792790f59d0.html
+  upload: public/google3b473792790f59d0.html
+
 - url: /public
   static_dir: public
 
